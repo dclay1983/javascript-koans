@@ -158,15 +158,31 @@ describe("About Applying What We Have Learnt", function() {
     expect(scd).toBe(232792560);
   });
 
-  /*
   it("should find the difference between the sum of the squares and the square of the sums", function () {
-    
+    var differenceOfSumSquare = function (n) {
+      return Math.abs((3*n**2 + 2*n) * (1 - n**2) / 12);
+    }
+    expect(differenceOfSumSquare(4)).toBe(70);
+    expect(differenceOfSumSquare(10)).toBe(2640);
+    expect(differenceOfSumSquare(95)).toBe(20503280);
   });
 
-  /*
   it("should find the 10001st prime", function () {
+    var max = 1000005;
 
+    var makePrimesList = function(max) {
+      var isPrime = _.map(_.range(max), x => x = true);
+      var foundPrimes = []
+      for (let i = 2; i < max; i++) {
+        if (isPrime[i] == true) {
+          foundPrimes.push(i);
+          for (let x = i * i; x <  max; x += i) {
+            isPrime[x] = false;
+          }
+        }
+      }
+      return foundPrimes;
+    }
+    expect(makePrimesList(max)[10000]).toBe(104743);
   });
-
-  */
 });

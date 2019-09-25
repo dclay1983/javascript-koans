@@ -92,26 +92,43 @@ describe("About Applying What We Have Learnt", function() {
 
   /*********************************************************************************/
   /* UNCOMMENT FOR EXTRA CREDIT */
-  /*
+
   it("should find the largest prime factor of a composite number", function () {
-  
+    var largestPrimeFactor = function(num) {
+      let i = 2
+      while (i <= Math.sqrt(num)) {
+        if (num % i === 0) {
+          num /= i;
+        } else { 
+          i += i === 2 ? 1 : 2;
+        }
+      }
+      return num
+    }
+    expect(largestPrimeFactor(212)).toBe(53);
+    expect(largestPrimeFactor(395)).toBe(79);
+    expect(largestPrimeFactor(4532167465)).toBe(2755117);
   });
 
+  /*
   it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
     
   });
 
+  /*
   it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
       
-    
   });
 
+  /*
   it("should find the difference between the sum of the squares and the square of the sums", function () {
     
   });
 
+  /*
   it("should find the 10001st prime", function () {
 
   });
+
   */
 });

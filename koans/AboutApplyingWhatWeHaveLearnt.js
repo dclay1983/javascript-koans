@@ -112,12 +112,50 @@ describe("About Applying What We Have Learnt", function() {
   });
 
   it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
-    
+    let largestPalindrome = 0;
+    var isPalindrome = function(num) {
+      return num.toString() === num.toString().split("").reverse().join("");
+    }
+    let lowerLimit = 0;
+    let upperLimit = 999;
+    for (let x = upperLimit; x > lowerLimit; x--) {
+      for (let y = upperLimit; y > lowerLimit; y--) {
+        if (isPalindrome(x * y)) {
+          largestPalindrome = x * y;
+          lowerLimit = y;
+          upperLimit = x;
+        }
+      }
+    }
+
+    expect(largestPalindrome).toBe(888888);
   });
 
-  /*
   it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
-      
+    var factors = {};
+    // !! Find out how to prevent enumeration on prototyped properties !!
+    Object.defineProperty(factors, "beget", {enumerable: false})
+    for (let num = 2; num <= 20; num++) {
+      let i = 2;
+      let count = 0
+      let numCopy = num
+      while (i <= numCopy) {
+        if (numCopy % i === 0) {
+          count++
+          factors[i] = factors[i] && factors[i] > count ? factors[i] : count;
+          numCopy /= i;
+        } else {
+          count = 0
+          i += i === 2 ? 1 : 2;
+        }
+      }
+    }
+    var scd = 1;
+    for (let factor in factors) {
+      scd *= factor ** factors[factor];
+    }
+
+    expect(scd).toBe(232792560);
   });
 
   /*

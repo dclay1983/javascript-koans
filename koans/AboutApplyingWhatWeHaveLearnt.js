@@ -105,12 +105,12 @@ describe("About Applying What We Have Learnt", function() {
       }
       return num
     }
+
     expect(largestPrimeFactor(212)).toBe(53);
     expect(largestPrimeFactor(395)).toBe(79);
     expect(largestPrimeFactor(4532167465)).toBe(2755117);
   });
 
-  /*
   it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
     
   });

@@ -99,6 +99,13 @@ describe("About Functions", function() {
   });
 
   it("should use function body as a string", function() {
+    function getLinebreak(){
+      if(navigator.userAgent.indexOf("Windows") != -1){
+        return "\r\n";
+      }
+      return "\n";
+    }
+    nl = getLinebreak();
     var add = new Function("a", "b", "return a + b;");
     expect(add(1, 2)).toBe(3);
      
@@ -106,6 +113,6 @@ describe("About Functions", function() {
       // An internal comment
       return a * b;
     };
-    expect(multiply.toString()).toBe("function(a, b) {\r\n      // An internal comment\r\n      return a * b;\r\n    }");
+    expect(multiply.toString()).toBe(`function(a, b) {${nl}      // An internal comment${nl}      return a * b;${nl}    }`);
   });  
 });
